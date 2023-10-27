@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Georgia, serif;
+            background-image: url('download2.jpg'); /* Replace 'your-background-image.jpg' with the path to your image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+         position: relative;
+            background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background for content */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .mood-selector {
+            margin: 20px;
+        }
+        .mood-button {
+            display: inline-block;  
+            margin: 10px; 
+            padding: 10px 20px; 
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .mood-button:hover {
+            background-color: #2980b9;
+        }
+        #food-suggestion {
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+        .happy {
+            background-color: #f1c40f;
+        }
+        .sad {
+            background-color: #e74c3c;
+        }
+        .hungry {
+            background-color: #2ecc71;
+        }
+        .excited {
+            background-color: #9b59b6;
+        }
+        .radio-container {
+            position: absolute;
+            top: 78%; /* Adjust this value to move the button up */
+            right: 280px; /* Adjust this value to position the button horizontally */
+            text-align: right;
+        }
+        .radio-label {
+            display: block;
+            margin-bottom: 10px;
+            color: #f9f3f1;
+            font-family: Georgia, serif;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="color:#0f0e0e; font-family: Georgia, serif;"> Hey Buddy! Good Food = Good Mood</h2>
+    <div class="container">
+        <div class="content-container">
+            <h4 style="color: #0f0e0e; font-family: Georgia, serif;">Let me know your mood:</h4>
+            <div class="mood-selector">
+                <button class="mood-button happy" onclick="suggestFood('Happy')">Happy</button>
+                <button class="mood-button sad" onclick="suggestFood('Sad')">Sad</button>
+                <button class="mood-button hungry" onclick="suggestFood('Hungry')">Hungry</button>
+                <button class="mood-button excited" onclick="suggestFood('Excited')">Excited</button>
+            </div>
+            <div id="food-suggestion"></div>
+        </div>
+    </div>
+    <div class="radio-container">
+        <div class="radio-label">
+            <label for="option1"> MENU CARD </label>
+            <input type="radio" name="food-choice" value="option1" id="option1" onclick="redirectToPage('food-part2.html')">
+        </div>
+    </div>
+    
+    <script>
+        function suggestFood(mood) {
+            let foodSuggestion = '';
+            let suggestionColor = '';
+            switch (mood) {
+                case 'Happy':
+                    foodSuggestion = 'How about a big, cheerful pizza?';
+                    suggestionColor = '#f1c40f'; // Yellow
+                    break;
+                case 'Sad':
+                    foodSuggestion = 'Good things take time, buddy. Some comforting sugars and cheese might help.';
+                    suggestionColor = '#e74c3c'; // Red
+                    break;
+                case 'Hungry':
+                    foodSuggestion = 'Satisfy your tummy with a delicious burger.';
+                    suggestionColor = '#2ecc71'; // Green
+                    break;
+                case 'Excited':
+                    foodSuggestion = 'Celebrate with some spicy tacos!';
+                    suggestionColor = '#9b59b6'; // Purple
+                    break;
+            }
+            document.getElementById('food-suggestion').innerHTML = `Feeling ${mood}? <span style="background-color: ${suggestionColor}; color: #fff; padding: 5px;">${foodSuggestion}</span>`;
+        }
+
+        function redirectToPage(pageURL) {
+            window.location.href = pageURL;
+        }
+    </script>
+</body>
+</html>
